@@ -1,5 +1,7 @@
 package _03_Intro_to_Binary_Trees;
 
+import java.util.Stack;
+
 public class BinaryTreeDemo {
 
     /*
@@ -33,7 +35,35 @@ public class BinaryTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree <Integer >tree = new BinaryTree <Integer> ();
+    	Stack <Node <Integer>> stack = new Stack <Node <Integer>> ();
+    	tree.insert(20);
+    	tree.insert(12);
+    	tree.insert (20000);
+    	tree.insert(2);
+    	tree.insert(9765654);
+    	tree.insert(38383);
+    	tree.insert(22);
+    	System.out.println(tree.search(12));
+    	System.out.println();
+    	tree.printVertical();
+    	tree.delete(20);
+    	tree.printVertical();
+    	Node <Integer> node = tree.getRoot();
+    	stack.push(node);
+    	while (stack.size() > 0) {
+    		node = stack.pop();
+    		System.out.print(node.getValue() + ", ");
+    		node.setValue(node.getValue()/57);
+    		if (node.getLeft() != null) {
+    			stack.push(node.getLeft());
+    		}
+    		if (node.getRight() != null) {
+    			stack.push(node.getRight());
+    		}
+    	}
+    	System.out.println();
+    	tree.printVertical();
     }
 
 }
